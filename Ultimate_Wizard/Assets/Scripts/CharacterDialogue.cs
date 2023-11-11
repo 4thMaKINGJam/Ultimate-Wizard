@@ -28,6 +28,7 @@ public class CharacterDialogue : MonoBehaviour
     private void Awake() {
         sentence.text = "";
         character_name.text = "";
+        image.gameObject.SetActive(true);
     }
 
     private void Start() {

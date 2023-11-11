@@ -29,6 +29,7 @@ public class QuestionController : MonoBehaviour
 
     // 초기 세팅
     private void Awake() {
+        image.gameObject.SetActive(true);
         ShowQuestion(false);
     }
 

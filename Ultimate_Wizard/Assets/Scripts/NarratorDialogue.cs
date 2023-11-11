@@ -24,6 +24,7 @@ public class NarratorDialogue : MonoBehaviour
 
     // 초기 세팅
     private void Awake() {
+        image.gameObject.SetActive(true);
         sentence.text = "";
     }
 
