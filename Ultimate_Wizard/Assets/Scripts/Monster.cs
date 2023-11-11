@@ -23,6 +23,9 @@ public class Monster : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
+    private bool canShoot = true;
+    private float shootCooldown = 5f; // 5초 동안 공격 X
+
     void Start()
     {
         
@@ -35,7 +38,8 @@ public class Monster : MonoBehaviour
             Win();
         }
 
-        Attack(3);
+        // TODO: 랜덤 공격 패턴
+        Attack(6);
         Reload();
     }
 
@@ -63,7 +67,22 @@ public class Monster : MonoBehaviour
             case 3:
                 AttackPattern3();
                     break;
-                
+            case 4:
+                AttackPattern1();
+                break;
+            case 5:
+                AttackPattern2();
+                break;
+            case 6:
+                if (canShoot)
+                {
+                    AttackPattern6();
+                    StartCoroutine(ShootCooldown());
+                }
+                break;
+            case 7:
+                AttackPattern1();
+                break;
         }
 
         curDelay = 0;
@@ -72,7 +91,7 @@ public class Monster : MonoBehaviour
     // 몬스터 공격 패턴 1 - 홀수형
     void AttackPattern1()
     {
-        // 랜덤 
+        // TODO: 랜덤 숫자
         int lines = 7;
         float angleDiff = 20f; // 중심으로부터의 각도
 
@@ -104,7 +123,7 @@ public class Monster : MonoBehaviour
 
     void AttackPattern2()
     {
-        // 랜덤 
+        // TODO: 랜덤 숫자
         int lines = 4;
         float angleDiff = 20f; // 중심으로부터의 각도
 
@@ -159,6 +178,33 @@ public class Monster : MonoBehaviour
 
             Vector3 rotVec = Vector3.forward * 360 * i / roundNum + Vector3.forward * 90;
             bullet.transform.Rotate(rotVec);
+        }
+    }
+
+    IEnumerator ShootCooldown()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(shootCooldown);
+        canShoot = true;
+    }
+
+    void AttackPattern6()
+    {
+        int bulletCount = 20; // 동시에 나오는 총알 수
+
+        for (int i = 0; i < bulletCount; i++)
+        {
+            GameObject b = Instantiate(bullet, transform.position, transform.rotation);
+            Rigidbody2D rigid = b.GetComponent<Rigidbody2D>();
+
+            // 랜덤 각도 및 속도 생성
+            float angle = Random.Range(-25f, 25f);
+            float speed = Random.Range(3f, 15f);
+
+            // 총알 방향
+            Vector2 direction = Quaternion.Euler(0, 0, angle) * Vector2.right.normalized;
+
+            rigid.AddForce(direction.normalized * speed, ForceMode2D.Impulse);
         }
     }
 
