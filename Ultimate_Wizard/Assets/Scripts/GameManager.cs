@@ -1,23 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField]
-    private GameObject player;
-
-    public Image[] lifeImage;
-    public Sprite fulllife;
-    public Sprite emptylife;
-    public GameObject gameOverSet;
-
-    public GameObject GamoverUI;
-
     public static GameManager instance = null;
+
 
     private void Awake()
     {
@@ -33,9 +22,6 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-
-        gameOverSet.SetActive(false);
-        GamoverUI.SetActive(false);
     }
 
 
@@ -45,29 +31,18 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdateLifeIcon(int life)
-    {
-        foreach (Image img in lifeImage)
-        {
-            img.sprite = emptylife;
-            for (int index = 0; index < life; index++)
-            {
-                lifeImage[index].sprite = fulllife;
-            }
-        }
-    }
-
     public void GameClear()
     {
         Time.timeScale = 0f;
         Debug.Log("GameManager 호출 성공");
+        // TODO: Ending 씬 불러오기
     }
 
     public void GameOver()
     {
         Time.timeScale = 0f;
-        gameOverSet.SetActive(true);
-        GamoverUI.SetActive(true);
+        UIManager ui = GameObject.FindObjectOfType<UIManager>();
+        ui.ShowGameOverUI();        
     }
 
     public void GameRetry()
