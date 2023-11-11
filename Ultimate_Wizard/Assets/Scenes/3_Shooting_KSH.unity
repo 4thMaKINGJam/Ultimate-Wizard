@@ -373,6 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1000
+  speed: 1
   delay: 0.5
   curDelay: 0
   roundNum: 30

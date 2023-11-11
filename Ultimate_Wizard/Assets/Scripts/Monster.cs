@@ -8,9 +8,6 @@ public class Monster : MonoBehaviour
     private float health = 1000f;
 
     [SerializeField]
-    private float speed = 1f;
-
-    [SerializeField]
     private float delay = 0.2f; // 기준 딜레이
     public float curDelay;        // 현재 딜레이 시간
 
@@ -29,7 +26,9 @@ public class Monster : MonoBehaviour
     private GameObject player;
 
     private bool canShoot = true;
-    private float shootCooldown = 5f; // 5초 동안 공격 X
+    private float cooldown = 5f; // 5초 동안 공격 X
+
+    private int simulNum = 3;
 
     void Start()
     {
@@ -44,7 +43,7 @@ public class Monster : MonoBehaviour
         }
 
         // TODO: 랜덤 공격 패턴
-        Attack(6);
+        Attack(7);
         Reload();
     }
 
@@ -86,7 +85,7 @@ public class Monster : MonoBehaviour
                 }
                 break;
             case 7:
-                AttackPattern1();
+                AttackPattern7();
                 break;
         }
 
@@ -189,9 +188,10 @@ public class Monster : MonoBehaviour
     IEnumerator ShootCooldown()
     {
         canShoot = false;
-        yield return new WaitForSeconds(shootCooldown);
+        yield return new WaitForSeconds(cooldown);
         canShoot = true;
     }
+
 
     void AttackPattern6()
     {
@@ -202,7 +202,7 @@ public class Monster : MonoBehaviour
             GameObject b = Instantiate(bullet6, transform.position, transform.rotation);
             Rigidbody2D rigid = b.GetComponent<Rigidbody2D>();
 
-            // 랜덤 각도 및 속도 생성
+            // 랜덤 각도 및 속도
             float angle = Random.Range(-25f, 25f);
             float speed = Random.Range(3f, 15f);
 
@@ -212,6 +212,42 @@ public class Monster : MonoBehaviour
             rigid.AddForce(direction.normalized * speed, ForceMode2D.Impulse);
         }
     }
+
+    void AttackPattern7()
+    {
+        int bulletCount = 5; // 동시에 나오는 총알 수
+        
+        CircleCollider2D collider = bullet7.GetComponent<CircleCollider2D>();
+        float bulletWidth = 0;
+
+        if (collider != null)
+        {
+            bulletWidth = collider.radius * 2;
+        }
+
+        for (int j = 0; j < simulNum; j++)
+        {
+            // 랜덤 높이
+            float height = Random.Range(-4.5f, 4.5f);
+
+            // 총알 시작 위치
+            Vector3 startPosition = transform.position + new Vector3(0, height, 0);
+
+            // 총알 생성
+            for (int i = 0; i < bulletCount; i++)
+            {
+                // 각 총알의 x 위치 계산
+                float xPos = startPosition.x + i * bulletWidth + j;
+
+                // 총알 생성
+                GameObject b = Instantiate(bullet7, new Vector3(xPos, height, 0), Quaternion.identity);
+                Rigidbody2D rigid = b.GetComponent<Rigidbody2D>();
+
+                rigid.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
+            }
+        }
+    }
+
 
     private void OnCollisionEnter(Collision collision)
     {
