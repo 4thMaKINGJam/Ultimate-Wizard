@@ -21,6 +21,11 @@ public class Monster : MonoBehaviour
     private GameObject bullet;
 
     [SerializeField]
+    private GameObject bullet6;
+    [SerializeField]
+    private GameObject bullet7;
+
+    [SerializeField]
     private GameObject player;
 
     private bool canShoot = true;
@@ -194,7 +199,7 @@ public class Monster : MonoBehaviour
 
         for (int i = 0; i < bulletCount; i++)
         {
-            GameObject b = Instantiate(bullet, transform.position, transform.rotation);
+            GameObject b = Instantiate(bullet6, transform.position, transform.rotation);
             Rigidbody2D rigid = b.GetComponent<Rigidbody2D>();
 
             // 랜덤 각도 및 속도 생성
