@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    private float power;
+    public float speed = 2.0f;
+    public float power = 1.0f;
     public bool isTouchTop;
     public bool isTouchBottom;
     public bool isTouchLeft;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;
 
-    private bool isDragActive = false;
+  
 
 
     private Vector2 touchStart;
@@ -60,17 +60,19 @@ public class Player : MonoBehaviour
 
     void MoveCharacter(Vector2 delta)
     {
+        float newSpeed;
         if (isTouchTop && delta.y > 0 || isTouchBottom && delta.y < 0)
         {
 
-            speed = 0;
+            newSpeed = 0;
         }
         else
         {
 
-            speed = 2;
+            newSpeed = speed;
+            
         }
-        transform.position += new Vector3(0, delta.y * speed * Time.deltaTime, 0);
+        transform.position += new Vector3(0, delta.y * newSpeed * Time.deltaTime, 0);
 
     }
 
@@ -85,7 +87,7 @@ public class Player : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-        rigid.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
+        rigid.AddForce(Vector2.left * power, ForceMode2D.Impulse);
 
         curShotDelay = 0;
 
