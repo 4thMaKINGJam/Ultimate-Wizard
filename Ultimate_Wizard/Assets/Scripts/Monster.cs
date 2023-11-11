@@ -5,7 +5,9 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    private float health = 1f;
+    public float maxHealth = 2000f;
+
+    public float health = 2000f;
 
     [SerializeField]
     private float delay = 2f; // 기준 딜레이
