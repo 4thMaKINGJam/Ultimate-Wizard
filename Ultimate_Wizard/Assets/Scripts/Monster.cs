@@ -38,6 +38,13 @@ public class Monster : MonoBehaviour
 
     private bool isWin = false;
 
+    public float blinkTimer = 0.0f;
+    public float blinkDuration = 2f;
+    public float blinkTotalTime = 0.0f;
+    public float blinkTotalDuration = 2.0f;
+    public bool startBlinking = false;
+
+
     void Start()
     {
 
@@ -63,6 +70,7 @@ public class Monster : MonoBehaviour
         // 현재 패턴 실행
         Attack(curPattern);
         Reload();
+
     }
 
     void Reload()
@@ -279,7 +287,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-
     void Minus()
     {
         // 플레이어로부터 오는 공격
@@ -288,8 +295,24 @@ public class Monster : MonoBehaviour
 
     void Win()
     {
-        Time.timeScale = 0f;
         Debug.Log("승리");
         GameManager.instance.GameClear();
+
+        // 몬스터 죽었을 때 깜빡이기 시작
+        StartCoroutine(BlinkCoroutine(6)); // 5번 깜빡임
+    }
+
+    IEnumerator BlinkCoroutine(int blinkCount)
+    {
+        startBlinking = true;
+
+        for (int i = 0; i < blinkCount; i++)
+        {
+            yield return new WaitForSecondsRealtime(blinkDuration); // Realtime을 사용하여 timescale에 영향 받지 않도록 함
+            GetComponent<SpriteRenderer>().enabled = !GetComponent<SpriteRenderer>().enabled;
+        }
+
+        startBlinking = false;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

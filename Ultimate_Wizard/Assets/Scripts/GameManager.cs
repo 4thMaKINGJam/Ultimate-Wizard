@@ -9,21 +9,28 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     [SerializeField] private AudioSource bgm;
 
-    private void Awake() {
-        if (instance == null) {
+    private void Awake() 
+    {
+        if (instance == null) 
+        {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else {
-            if (instance != this) {
+        } 
+        else 
+        {
+            if (instance != this) 
+            {
                 Destroy(this.gameObject);
             }
         }
     }
 
     public void GameClear() {
-        Time.timeScale = 0f;
+       Time.timeScale = 0f;
         Debug.Log("GameManager 호출 성공");
+
         // TODO: Ending 씬 불러오기
+        //SceneManager.LoadScene("4_Ending_Narr");
     }
 
     public void GameOver() {
@@ -37,4 +44,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(scene_name);
     }
+
 }
