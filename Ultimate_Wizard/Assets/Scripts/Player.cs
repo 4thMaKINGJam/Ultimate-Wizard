@@ -26,11 +26,15 @@ public class Player : MonoBehaviour
 
 
     public GameObject bulletObjA;
+    private UIManager ui;
 
 
     //Animator anim;
 
-
+    private void Start()
+    {
+       ui = GameObject.FindObjectOfType<UIManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -45,17 +49,12 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            
             Vector2 delta = (Vector2)Input.mousePosition - touchStart;
 
-            
             MoveCharacter(delta);
 
-            
             touchStart = Input.mousePosition;
         }
-
-
     }
 
     void MoveCharacter(Vector2 delta)
@@ -75,9 +74,6 @@ public class Player : MonoBehaviour
         transform.position += new Vector3(0, delta.y * newSpeed * Time.deltaTime, 0);
 
     }
-
-
-
 
     void Fire()
     {
@@ -111,9 +107,6 @@ public class Player : MonoBehaviour
                     isTouchBottom = true;
 
                     break;
-
-
-
             }
         }
 
@@ -129,12 +122,9 @@ public class Player : MonoBehaviour
             }
             isHurt = true;
 
-
             life--;
-            GameManager.instance.UpdateLifeIcon(life);
+            ui.UpdateLifeIcon(life);
             RespawnPlayer();
-
-
 
             if (life == 0)
             {

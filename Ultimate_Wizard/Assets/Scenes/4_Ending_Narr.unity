@@ -391,7 +391,7 @@ RectTransform:
   m_GameObject: {fileID: 680230788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1643438, y: 2.1643438, z: 2.1643438}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2079705787}
@@ -400,8 +400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 733.50006, y: 450}
-  m_SizeDelta: {x: 250, y: 50}
+  m_AnchoredPosition: {x: 735, y: 450}
+  m_SizeDelta: {x: 280, y: 50}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &680230790
 MonoBehaviour:
@@ -514,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1117057523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -524,7 +524,7 @@ RectTransform:
   m_GameObject: {fileID: 1117057522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0431256, y: 1.0431256, z: 1.0431256}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1735765236}
@@ -632,8 +632,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f284e776d3f8245f79be8dc150205484, type: 3}
-    m_FontSize: 47
+    m_Font: {fileID: 12800000, guid: bd2492b9b48db4f66997fbd345d06d79, type: 3}
+    m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1.4
+    m_LineSpacing: 1.2
   m_Text: "\uC2A4\uD06C\uB9BD\uD2B8 \uB0B4\uC6A9 \uBE14\uB77C\uBE14\uB77C~~"
 --- !u!222 &1173130048
 CanvasRenderer:
@@ -1285,7 +1285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.5, y: 2}
   m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2058259469
@@ -1309,7 +1309,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c233354c201614a05b2a90ea404e1cc4, type: 3}
+    m_Font: {fileID: 12800000, guid: 26fbb6f205b704e588ba43859bd9803d, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -1357,7 +1357,7 @@ RectTransform:
   m_GameObject: {fileID: 2079705786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.975, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 680230789}
@@ -1365,8 +1365,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 26.6}
+  m_AnchoredPosition: {x: 0, y: 2}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079705788
 MonoBehaviour:
@@ -1389,7 +1389,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c233354c201614a05b2a90ea404e1cc4, type: 3}
+    m_Font: {fileID: 12800000, guid: 26fbb6f205b704e588ba43859bd9803d, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -1462,8 +1462,8 @@ MonoBehaviour:
   dialogue_box: {fileID: 13090129}
   button_ui: {fileID: 1324266269}
   dialogues:
-  - dialogue: "\uBE0C\uB8E8\uD2C0\uB9AC\uB294 000\uC774 \uB9C9\uACE0 \uC788\uB358
-      \uBB38\uC744 \uC5F4\uACE0 \uACC4\uB2E8\uC744 \uB530\uB77C \uCC9C\uCC9C\uD788
+  - dialogue: "\uBE0C\uB8E8\uD2C0\uB9AC\uB294 \uB4DC\uB798\uACE4\uC774 \uB9C9\uACE0
+      \uC788\uB358 \uBB38\uC744 \uC5F4\uACE0 \uACC4\uB2E8\uC744 \uB530\uB77C \uCC9C\uCC9C\uD788
       \uC62C\uB77C\uAC14\uB2E4."
   - dialogue: "\uC7A0\uAE50\uC774\uC5C8\uC9C0\uB9CC \uC9C0\uB3C5\uD558\uAC8C \uCF8C\uCF8C\uD588\uB358
       \uC9C0\uD558\uC2E4\uC758 \uACF5\uAE30\uC5D0\uC11C \uBC97\uC5B4\uB098\uC790

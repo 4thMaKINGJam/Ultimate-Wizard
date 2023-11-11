@@ -24,6 +24,7 @@ public class NarratorDialogue : MonoBehaviour
 
     // 초기 세팅
     private void Awake() {
+        image.gameObject.SetActive(true);
         sentence.text = "";
     }
 
@@ -32,10 +33,10 @@ public class NarratorDialogue : MonoBehaviour
         // 대화 화면 비활성화
         StartDialogue(false);
         // 배경 이미지 페이드 인 효과
-        StartCoroutine("FadeOutCoroutine");
+        StartCoroutine("FadeInCoroutine");
     }
 
-    IEnumerator FadeOutCoroutine() {
+    IEnumerator FadeInCoroutine() {
         // 처음 알파값
         float fadeCount = 1;
 
@@ -52,7 +53,7 @@ public class NarratorDialogue : MonoBehaviour
 
         // 다음 애니메이션 전 딜레이
         yield return new WaitForSeconds(delay_time);
-        StopCoroutine("FadeOutCoroutine");
+        StopCoroutine("FadeInCoroutine");
 
         // 다이얼로그 시작
         ShowDialogue();
@@ -77,7 +78,7 @@ public class NarratorDialogue : MonoBehaviour
         anim.SetBool("isOpen", false);
 
         // 화면 전환
-        StartCoroutine("FadeInCoroutine");
+        StartCoroutine("FadeOutCoroutine");
     }
 
     private void StartDialogue(bool flag) {
@@ -130,7 +131,7 @@ public class NarratorDialogue : MonoBehaviour
         EndDialogue();
     }
 
-    IEnumerator FadeInCoroutine() {
+    IEnumerator FadeOutCoroutine() {
         // 처음 알파값
         float fadeCount = 0;
 
@@ -140,7 +141,7 @@ public class NarratorDialogue : MonoBehaviour
             image.color = new Color(0, 0, 0, fadeCount);
         }
 
-        StopCoroutine("FadeInCoroutine");
+        StopCoroutine("FadeOutCoroutine");
         // 화면 전환
         SceneManager.LoadScene(scene_name);
     }

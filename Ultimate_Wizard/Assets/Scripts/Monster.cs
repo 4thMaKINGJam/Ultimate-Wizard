@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     private float health = 1f;
 
     [SerializeField]
-    private float delay = 0.2f; // 기준 딜레이
+    private float delay = 2f; // 기준 딜레이
     public float curDelay;        // 현재 딜레이 시간
 
     [SerializeField]
@@ -30,6 +30,10 @@ public class Monster : MonoBehaviour
 
     private int simulNum = 3;
 
+    private float changeTime = 0f;
+    private float duration = 0f;
+    private int curPattern = 0;
+
     void Start()
     {
 
@@ -42,8 +46,17 @@ public class Monster : MonoBehaviour
             Win();
         }
 
-        // TODO: 랜덤 공격 패턴
-        Attack(7);
+        // 공격 패턴 변경
+        if (Time.time >= changeTime - 1f)
+        {
+            curPattern = Random.Range(1, 8); // 랜덤 패턴 1~7
+            duration = Random.Range(5f, 10f); 
+            changeTime = Time.time + duration; // 다음 패턴 변경 시간 설정
+            Debug.Log(curPattern);
+        }
+
+        // 현재 패턴 실행
+        Attack(curPattern);
         Reload();
     }
 
@@ -95,8 +108,10 @@ public class Monster : MonoBehaviour
     // 몬스터 공격 패턴 1 - 홀수형
     void AttackPattern1()
     {
-        // TODO: 랜덤 숫자
-        int lines = 7;
+        // 랜덤 숫자
+        int r = Random.Range(0, 3);
+        int lines = r * 2 + 3; // 3, 5, 7
+
         float angleDiff = 20f; // 중심으로부터의 각도
 
         // 총알 생성
@@ -127,8 +142,10 @@ public class Monster : MonoBehaviour
 
     void AttackPattern2()
     {
-        // TODO: 랜덤 숫자
-        int lines = 4;
+        // 랜덤 숫자
+        int r = Random.Range(0, 3);
+        int lines = r * 2 + 2; // 2, 4, 6
+
         float angleDiff = 20f; // 중심으로부터의 각도
 
         // 총알 생성
@@ -191,8 +208,6 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         canShoot = true;
     }
-
-
     void AttackPattern6()
     {
         int bulletCount = 20; // 동시에 나오는 총알 수
@@ -272,5 +287,4 @@ public class Monster : MonoBehaviour
         Debug.Log("승리");
         GameManager.instance.GameClear();
     }
-
 }
