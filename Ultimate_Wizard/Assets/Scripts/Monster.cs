@@ -15,6 +15,9 @@ public class Monster : MonoBehaviour
     public float curDelay;        // 현재 딜레이 시간
 
     [SerializeField]
+    private int roundNum = 30;
+
+    [SerializeField]
     private GameObject bullet;
 
     [SerializeField]
@@ -32,7 +35,7 @@ public class Monster : MonoBehaviour
             Win();
         }
 
-        Attack(2);
+        Attack(3);
         Reload();
     }
 
@@ -57,6 +60,9 @@ public class Monster : MonoBehaviour
             case 2:
                 AttackPattern2();
                 break;
+            case 3:
+                AttackPattern3();
+                    break;
                 
         }
 
@@ -99,7 +105,7 @@ public class Monster : MonoBehaviour
     void AttackPattern2()
     {
         // 랜덤 
-        int lines = 7;
+        int lines = 4;
         float angleDiff = 20f; // 중심으로부터의 각도
 
         // 총알 생성
@@ -125,6 +131,34 @@ public class Monster : MonoBehaviour
             }
             direction = Quaternion.Euler(0, 0, angle) * center.normalized;
             rigid.AddForce(direction.normalized * 10, ForceMode2D.Impulse);
+        }
+    }
+
+    void AttackPattern3()
+    {
+        int roundNumA = 50;
+        int roundNumB = 30;
+        
+        if (roundNum == roundNumA)
+        {
+            roundNum = roundNumB;
+        }
+        else
+        {
+            roundNum = roundNumA;
+        }
+
+        for (int i = 0; i < roundNum; i++)
+        {
+            GameObject b = Instantiate(bullet, transform.position, Quaternion.identity);
+            Rigidbody2D rigid = b.GetComponent<Rigidbody2D>();
+
+            Vector2 direction = new Vector2(Mathf.Cos(Mathf.PI * 2 * i / roundNum)
+                                                                           , Mathf.Sin(Mathf.PI * 2 * i / roundNum));
+            rigid.AddForce(direction.normalized * 5, ForceMode2D.Impulse);
+
+            Vector3 rotVec = Vector3.forward * 360 * i / roundNum + Vector3.forward * 90;
+            bullet.transform.Rotate(rotVec);
         }
     }
 

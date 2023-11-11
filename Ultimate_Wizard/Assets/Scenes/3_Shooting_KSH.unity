@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &418798648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 37806194603915000, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_Name
+      value: MonsterBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 37806194603915004, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
 --- !u!1 &583157096
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   speed: 1
-  delay: 0.2
+  delay: 0.5
   curDelay: 0
   bullet: {fileID: 37806194603915000, guid: dd1dae7dcbe3db242b669bb04011dda3, type: 3}
   player: {fileID: 583157096}
