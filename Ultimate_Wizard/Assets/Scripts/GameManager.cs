@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-<<<<<<< HEAD
 
     [SerializeField]
     public Player player;
@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject EvolutionUI;
 
-=======
->>>>>>> main
     public static GameManager instance = null;
 
 
@@ -58,14 +56,7 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-<<<<<<< HEAD
-
-
         EvolutionUI.SetActive(false);
-    //    gameOverSet.SetActive(false);
-    //   GamoverUI.SetActive(false);
-=======
->>>>>>> main
     }
 
 
@@ -149,17 +140,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0f;
-<<<<<<< HEAD
-   //     gameOverSet.SetActive(true);
-   //     GamoverUI.SetActive(true);
-=======
         UIManager ui = GameObject.FindObjectOfType<UIManager>();
         ui.ShowGameOverUI();        
->>>>>>> main
     }
-
-
- 
     public void GameRetry()
     {
         Time.timeScale = 1f;
