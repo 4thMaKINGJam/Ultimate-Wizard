@@ -1,4 +1,4 @@
-癤using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +12,6 @@ public class Player : MonoBehaviour
     public bool isTouchRight;
     public bool isHurt;
 
-    public GameManager manager;
-
     public int life = 3;
     private bool attack = true;
 
@@ -21,21 +19,8 @@ public class Player : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;
 
-
-
-    public GameManager manager;
-
-    public int life = 3;
-    private bool attack = true;
-
-    //총알 속도 조정
-    public float maxShotDelay;
-    public float curShotDelay;
-
-
-
     private bool isDragActive = false;
-    //곗 �
+    //곗  
     private Vector2 touchStart;
 
 
@@ -54,55 +39,55 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            // 留곗 대┃ 吏� �
+            // 留곗 대┃ 吏   
             touchStart = Input.mousePosition;
         }
         else if (Input.GetMouseButton(0))
         {
-            // 留곗 대┃ 吏�怨  留곗 移 李⑥대� 怨
+            // 留곗 대┃ 吏 怨  留곗 移 李⑥대  怨
             Vector2 delta = (Vector2)Input.mousePosition - touchStart;
 
-            // 罹由� 대
+            // 罹由  대
             MoveCharacter(delta);
 
-            // 留곗 대┃ 吏� 곗댄
+            // 留곗 대┃ 吏  
             touchStart = Input.mousePosition;
         }
- 
+
 
     }
 
     void MoveCharacter(Vector2 delta)
     {
-        if (isTouchTop && delta.y>0 || isTouchBottom && delta.y<0)
+        if (isTouchTop && delta.y > 0 || isTouchBottom && delta.y < 0)
         {
-   
+
             speed = 0;
         }
         else
         {
-     
-            speed = 2; 
+
+            speed = 2;
         }
         transform.position += new Vector3(0, delta.y * speed * Time.deltaTime, 0);
 
     }
 
 
-   
+
 
     void Fire()
     {
-        if ((curShotDelay < maxShotDelay)||(attack = false))
+        if ((curShotDelay < maxShotDelay) || (attack = false))
             return;
-        
+
 
         GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.left * 15, ForceMode2D.Impulse);
 
         curShotDelay = 0;
-    
+
     }
     void Reload()
     {
@@ -111,26 +96,27 @@ public class Player : MonoBehaviour
 
 
     void OnTriggerEnter2D(Collider2D collision)
-     {
-         if (collision.gameObject.tag == "Border")
-         {
-             switch (collision.gameObject.name)
-             {
-                 case "Top":
-                     isTouchTop = true;
-                     break;
-                 case "Bottom":
-                     isTouchBottom = true;
-
-                     break;
-
-               
-
-             }
-         }
-
-         else if (collision.gameObject.tag == "MonsterBullet")
+    {
+        if (collision.gameObject.tag == "Border")
         {
+            switch (collision.gameObject.name)
+            {
+                case "Top":
+                    isTouchTop = true;
+                    break;
+                case "Bottom":
+                    isTouchBottom = true;
+
+                    break;
+
+
+
+            }
+        }
+
+        else if (collision.gameObject.tag == "MonsterBullet")
+        {
+
 
             Destroy(collision.gameObject);
 
@@ -140,58 +126,67 @@ public class Player : MonoBehaviour
             }
             isHurt = true;
 
+
             life--;
-            manager.UpdateLifeIcon(life);
-            manager.RespawnPlayer();// 硫댁 ъ, 怨듦꺽x, 3珥 臾댁 
+            GameManager.instance.UpdateLifeIcon(life);
+            RespawnPlayer();
 
 
 
-            if (life ==0)
+            if (life == 0)
             {
-                Destroy(gameObject);
+                Destroy(this.gameObject);
                 Time.timeScale = 0;
-                manager.GameOver();
+                GameManager.instance.GameOver();
             }
             else
             {
-                manager.RespawnPlayer();
-                
+                RespawnPlayer();
             }
-           
-
-
-
-
         }
-       
+
+    }
+
+    public void RespawnPlayer()
+    {
+        Invoke("RespawnPlayerExe", 3f);
+        // player.transform.position = Vector3.down * 3.5;
+        //player.SetActive(true);
+    }
+
+    public void RespawnPlayerExe()
+    {
+        Player playerLogic = gameObject.GetComponent<Player>();
+        playerLogic.isHurt = false;
     }
 
 
+
     void OnTriggerExit2D(Collider2D collision)
-     {
-         if (collision.gameObject.tag == "Border")
-         {
-             switch (collision.gameObject.name)
-             {
-                 case "Top":
-                     isTouchTop = false;
-                     break;
-                 case "Bottom":
-                     isTouchBottom = false;
+    {
+        if (collision.gameObject.tag == "Border")
+        {
+            switch (collision.gameObject.name)
+            {
+                case "Top":
+                    isTouchTop = false;
+                    break;
+                case "Bottom":
+                    isTouchBottom = false;
 
-                     break;
+                    break;
 
-               /*  case "Left":
-                     isTouchLeft = false;
+                    /*  case "Left":
+                          isTouchLeft = false;
 
-                     break;
+                          break;
 
-                 case "Right":
-                     isTouchRight = false;
+                      case "Right":
+                          isTouchRight = false;
 
-                     break;*/
+                          break;*/
 
-             }
-         }
-     }
+            }
+        }
+    }
 }

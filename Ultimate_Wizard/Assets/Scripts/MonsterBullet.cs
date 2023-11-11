@@ -16,7 +16,7 @@ public class MonsterBullet : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("BorderBullet"))
         {
