@@ -32,7 +32,7 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -60,7 +60,7 @@ public class Monster : MonoBehaviour
         }
 
         // 총알 생성
-        switch(pattern)
+        switch (pattern)
         {
             case 1:
                 AttackPattern1();
@@ -70,7 +70,7 @@ public class Monster : MonoBehaviour
                 break;
             case 3:
                 AttackPattern3();
-                    break;
+                break;
             case 4:
                 AttackPattern1();
                 break;
@@ -117,7 +117,7 @@ public class Monster : MonoBehaviour
             else
             {
                 // 나머지 갈래는 중심으로부터 일정 각도씩 차이 나도록 설정
-                float angle = (i < lines / 2) ? i * angleDiff : (i - lines / 2) * - angleDiff;
+                float angle = (i < lines / 2) ? i * angleDiff : (i - lines / 2) * -angleDiff;
                 direction = Quaternion.Euler(0, 0, angle) * center.normalized;
             }
 
@@ -145,12 +145,12 @@ public class Monster : MonoBehaviour
             if (lines % 2 == 0)
             {
                 // 짝수일 때 중앙이 빈 곳을 향하도록 설정
-                angle = (i < lines / 2) ? i * angleDiff : (i - (lines - 1) / 2) * - angleDiff;
+                angle = (i < lines / 2) ? i * angleDiff : (i - (lines - 1) / 2) * -angleDiff;
             }
             else
             {
                 // 홀수일 때 중앙 갈래는 플레이어를 향하도록 설정
-               angle = (i == lines / 2) ? 0 : (i < lines / 2) ? i * angleDiff : (i - (lines - 1) / 2) * -angleDiff;
+                angle = (i == lines / 2) ? 0 : (i < lines / 2) ? i * angleDiff : (i - (lines - 1) / 2) * -angleDiff;
             }
             direction = Quaternion.Euler(0, 0, angle) * center.normalized;
             rigid.AddForce(direction.normalized * 10, ForceMode2D.Impulse);
@@ -161,7 +161,7 @@ public class Monster : MonoBehaviour
     {
         int roundNumA = 50;
         int roundNumB = 30;
-        
+
         if (roundNum == roundNumA)
         {
             roundNum = roundNumB;
@@ -216,7 +216,7 @@ public class Monster : MonoBehaviour
     void AttackPattern7()
     {
         int bulletCount = 5; // 동시에 나오는 총알 수
-        
+
         CircleCollider2D collider = bullet7.GetComponent<CircleCollider2D>();
         float bulletWidth = 0;
 
@@ -253,6 +253,7 @@ public class Monster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBullet"))
         {
+            Debug.Log(health);
             Destroy(collision.gameObject);
             Minus();
         }
@@ -267,7 +268,9 @@ public class Monster : MonoBehaviour
 
     void Win()
     {
+        Time.timeScale = 0f;
         Debug.Log("승리");
+        GameManager.instance.GameClear();
     }
-    
- }
+
+}
