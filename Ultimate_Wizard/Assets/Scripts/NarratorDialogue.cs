@@ -29,6 +29,7 @@ public class NarratorDialogue : MonoBehaviour
     }
 
     private void Start() {
+        Time.timeScale = 1f;
         Debug.Log("4_Ending_Narr 진행 시작");
         // 대화 화면 비활성화
         StartDialogue(false);

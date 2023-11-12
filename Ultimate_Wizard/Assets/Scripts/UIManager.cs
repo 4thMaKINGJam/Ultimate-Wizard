@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverSet;
 
     public GameObject GameoverUI;
+
+    public Image fadeInImg;
+
     private int dum = -1;
 
     // Start is called before the first frame update
@@ -47,5 +51,29 @@ public class UIManager : MonoBehaviour
                 lifeImage[index].sprite = fulllife;
             }
         }
+    }
+
+    public void FadeIn()
+    {
+        // 화면 전환
+        StartCoroutine(FadeInCoroutine());
+        Debug.Log("FadeIN 호출");
+    }
+
+    IEnumerator FadeInCoroutine()
+    {
+        // 처음 알파값
+        float fadeCount = 0;
+
+        while (fadeCount < 1.0f)
+        {
+            fadeCount += 0.01f;
+            fadeInImg.color = new Color(0, 0, 0, fadeCount);
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+
+        // 화면 전환
+        SceneManager.LoadScene("4_Ending_Narr");
+        Debug.Log("씬 로딩");
     }
 }

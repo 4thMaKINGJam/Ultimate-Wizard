@@ -26,11 +26,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameClear() {
-       Time.timeScale = 0f;
-        Debug.Log("GameManager 호출 성공");
-
-        // TODO: Ending 씬 불러오기
-        //SceneManager.LoadScene("4_Ending_Narr");
+       Time.timeScale = 0f; 
     }
 
     public void GameOver() {
