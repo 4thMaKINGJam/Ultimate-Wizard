@@ -28,6 +28,8 @@ public class Monster : MonoBehaviour
     int roundNumA = 31;
     [SerializeField]
     int roundNumB = 23;
+
+    [SerializeField]
     private AudioSource bgm;
 
     private bool canShoot = true;

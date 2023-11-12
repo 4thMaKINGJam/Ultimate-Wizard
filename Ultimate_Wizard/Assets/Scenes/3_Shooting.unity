@@ -1240,6 +1240,7 @@ MonoBehaviour:
   player: {fileID: 1352291628}
   roundNumA: 31
   roundNumB: 23
+  bgm: {fileID: 976459372}
 --- !u!61 &780024356
 BoxCollider2D:
   m_ObjectHideFlags: 0
