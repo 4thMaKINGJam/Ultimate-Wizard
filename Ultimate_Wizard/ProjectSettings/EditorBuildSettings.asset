@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2_DummySelect.unity
     guid: 2b9f35d8dab1b4d78b72a377b1b82b53
-  - enabled: 0
-    path: Assets/Scenes/3_Shooting_Ossu.unity
-    guid: 2fb40cd48364d409fa5da51ff3e166ef
   - enabled: 1
     path: Assets/Scenes/3_Shooting.unity
     guid: 7b8db3eecdc6ec044a2d42e5f037697b
@@ -32,7 +29,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4_Ending.unity
     guid: e55d80ff7735a4554a27ad746ba70f98
-  - enabled: 0
-    path: Assets/Scenes/3_Shooting_playertype.unity
-    guid: da9b51473a9da9446b943aca5e55184c
   m_configObjects: {}

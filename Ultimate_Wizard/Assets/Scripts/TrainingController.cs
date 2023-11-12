@@ -26,6 +26,7 @@ public class TrainingController : MonoBehaviour
     [SerializeField] private GameObject EvolutionUI;
     [SerializeField] private Text text;
     [SerializeField] private Image[] dummies;
+    [SerializeField] private AudioSource bgm;
 
     // 초기 세팅
     private void Awake() {
@@ -106,6 +107,7 @@ public class TrainingController : MonoBehaviour
     public void Evolution_dummy(int idx) {
         dummies[idx].gameObject.SetActive(true);
         EvolutionUI.SetActive(true);
+        bgm.Play();
     }
 
     public void NextScene(string scene_name) {
