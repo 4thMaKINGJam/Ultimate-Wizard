@@ -209,11 +209,23 @@ void FireS() {
             if (isHurt) {
                 return;
             }
-            
 
             life--;
             bgm.Play();
             ui.UpdateLifeIcon(life);
+
+            if (life <= 0)
+            {
+                bgm.Play();
+                Invoke("DestroyObject", 3f);
+                SoundManager.instance.DestroyBgm();
+                GameManager.instance.GameOver();
+            }
+            else
+            {
+                RespawnPlayer();
+            }
+
             if (isHurt == false)
             {
                 StartCoroutine(BlinkCoroutine(10)); // 5�� �����
@@ -221,15 +233,37 @@ void FireS() {
             isHurt = true;
 
             RespawnPlayer();
+        }
+        else if (collision.gameObject.CompareTag("Monster"))
+        {
+            if (isHurt)
+            {
+                return;
+            }
 
-            if (life == 0) {
+            life--;
+            bgm.Play();
+            ui.UpdateLifeIcon(life);
+
+            if (life <= 0)
+            {
                 bgm.Play();
                 Invoke("DestroyObject", 3f);
                 SoundManager.instance.DestroyBgm();
                 GameManager.instance.GameOver();
-            } else {
+            }
+            else
+            {
                 RespawnPlayer();
             }
+
+            if (isHurt == false)
+            {
+                StartCoroutine(BlinkCoroutine(10)); // 5�� �����
+            }
+            isHurt = true;
+
+            RespawnPlayer();
         }
     }
 

@@ -5,16 +5,13 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField]
-    public float maxHealth = 2000f;
+    public float maxHealth = 100f;
 
-    public float health = 2000f;
+    public float health = 100f;
 
     [SerializeField]
     private float delay = 2f; // 기준 딜레이
     public float curDelay;        // 현재 딜레이 시간
-
-    [SerializeField]
-    private int roundNum = 30;
 
     [SerializeField]
     private GameObject bullet;
@@ -26,6 +23,11 @@ public class Monster : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    int roundNumA = 31;
+    [SerializeField]
+    int roundNumB = 23;
 
     private bool canShoot = true;
     private float cooldown = 5f; // 5초 동안 공격 X
@@ -47,6 +49,7 @@ public class Monster : MonoBehaviour
     private Vector2 originalPosition;
 
     private bool isAttack4 = false;
+    private int roundNum = 30;
 
     private void Start()
     {
@@ -194,13 +197,10 @@ public class Monster : MonoBehaviour
     }
 
     void AttackPattern3()
-    {
-        int roundNumA = 50;
-        int roundNumB = 30;
-
+    { 
         if (roundNum == roundNumA)
         {
-            roundNum = roundNumB;
+           roundNum = roundNumB;
         }
         else
         {

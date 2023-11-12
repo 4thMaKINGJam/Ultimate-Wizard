@@ -38,4 +38,9 @@ public class Main : MonoBehaviour
         // 화면 전환
         SceneManager.LoadScene("1_StoryFirst");
     }
+
+    public void EndButton()
+    {
+        Application.Quit();
+    }
 }
